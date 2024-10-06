@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GestureTech - Home</title>
+    <!-- Include Google Fonts and your CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='/'">GestureTech</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="#">Learn Gestures</a></li>
+            <li><a href="#">Sign Up</a></li>
+            <li>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    🌓
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to GestureTech</h1>
+            <p>Explore how hand gestures can revolutionize technology interactions.</p>
+            <a href="{{ url_for('dashboard') }}" class="btn-primary">Go to Dashboard</a>
+        </div>
+    </section>
+
+    <!-- Hand Gesture Descriptions -->
+    <section class="gesture-description">
+        <h2>Hand Gesture Descriptions</h2>
+        <div class="gestures-container">
+            <div class="gesture-card">
+                <h3>Gesture A</h3>
+                <p>Represents the letter A in sign language. Used for basic alphabet communication.</p>
+            </div>
+            <div class="gesture-card">
+                <h3>Gesture B</h3>
+                <p>Represents the letter B in sign language, used to spell words starting with B.</p>
+            </div>
+            <div class="gesture-card">
+                <h3>Hello Gesture</h3>
+                <p>A wave gesture used to greet someone or say "Hello".</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GestureTech. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            // Save theme preference in localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme on page load
+        window.onload = function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+        }
+    </script>
+</body>
+</html>
